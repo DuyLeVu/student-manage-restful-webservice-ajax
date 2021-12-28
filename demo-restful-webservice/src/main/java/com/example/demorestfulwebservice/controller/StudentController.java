@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -51,4 +52,14 @@ public class StudentController {
         studentService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/search/{name}")
+    public ResponseEntity<List<Student>> findByNameContaining(@PathVariable String name) {
+        List<Student> students = studentService.findByNameContaining(name);
+        if (students.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(students, HttpStatus.OK);
+    }
+
 }

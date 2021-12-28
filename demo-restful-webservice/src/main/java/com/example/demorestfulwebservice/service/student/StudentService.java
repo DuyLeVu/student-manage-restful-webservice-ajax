@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 @Service
 public class StudentService implements IStudentService{
@@ -40,5 +41,10 @@ public class StudentService implements IStudentService{
     @Override
     public Iterable<Student> findAll() {
         return null;
+    }
+
+    @Override
+    public List<Student> findByNameContaining(String name) {
+        return iStudentRepository.findByNameContaining(name);
     }
 }

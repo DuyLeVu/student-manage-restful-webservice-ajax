@@ -136,13 +136,31 @@
                     },
                     type: "DELETE",
                     url: "http://localhost:8080/api/students/" + id,
-                    success: function (data){
+                    success: function (data) {
                         getAllStudent(data);
                     },
                     error: function (error) {
                     }
                 });
             }
+        }
+
+        function showFormSearchStudent() {
+            let form = '<input type="text" id="key">' +
+                '   <button onclick="searchStudent()">Tìm kiếm</button>'
+            document.getElementById("display").innerHTML = form;
+        }
+
+        function searchStudent() {
+            let name = $("#key").val();
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/api/students/search/" + name,
+                success: function (data) {
+                    console.log(data)
+                    display(data);
+                }
+            })
         }
 
         function display(array) {
@@ -161,6 +179,7 @@
 <body>
 <button onclick="getAllStudent()">Hiển thị danh sách học sinh</button>
 <button onclick="showFormAddStudent()">Thêm mới học sinh</button>
+<button onclick="showFormSearchStudent()">Tìm kiếm theo tên học sinh</button>
 <div id="display">
 
 </div>
