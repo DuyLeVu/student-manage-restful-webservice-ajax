@@ -45,4 +45,10 @@ public class StudentController {
         studentService.save(student);
         return new ResponseEntity<>(student1.get(), HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Student> delete(@PathVariable Long id) {
+        studentService.remove(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
