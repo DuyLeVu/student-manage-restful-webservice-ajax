@@ -1,0 +1,12 @@
+.logo, .banner{
+    height: 200px;
+}
+.logo, .banner, #nav, .content, .footer, .student{
+    border: 1px solid #a9acad;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.footer{
+    height: 50px;
+}
+
